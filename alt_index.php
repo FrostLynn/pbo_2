@@ -31,27 +31,40 @@ trait Perilaku {
 }
 
 class Hewan {
-    use SifatFisik, Perilaku;
-
     private $nama;
 
-    public function __construct($nama, $warnaBulu, $suara) {
+    public function __construct($nama) {
         $this->nama = $nama;
-        $this->setWarnaBulu($warnaBulu);
-        $this->setSuara($suara);
     }
 
     public function getInfo() {
-        echo "Nama: " . $this->nama;
-        echo "<br>";
-        echo "Warna Bulu: " . $this->getWarnaBulu();
-        echo "<br>";
-        $this->bersuara();
+        echo "Nama: " . $this->nama . "<br>";
     }
 }
 
-// Membuat objek hewan
-$kucing = new Hewan("Kucing", "Putih", "Meong");
+// Subkelas Hewan
+class Kucing extends Hewan {
+    use SifatFisik, Perilaku;
+
+    private $namaKucing; // Properti tambahan untuk nama kucing
+
+    public function __construct($nama, $warnaBulu, $suara, $namaKucing) {
+        parent::__construct($nama);
+        $this->setWarnaBulu($warnaBulu);
+        $this->setSuara($suara);
+        $this->namaKucing = $namaKucing;
+    }
+
+    public function getInfo() {
+        parent::getInfo();
+        echo "Warna Bulu: " . $this->getWarnaBulu() . "<br>";
+        $this->bersuara();
+        echo "Nama Kucing: " . $this->namaKucing . "<br>";
+    }
+}
+
+// Membuat objek kucing
+$kucing = new Kucing("Kucing", "Putih", "Meong", "Whiskers");
 $kucing->getInfo();
 
 ?>
