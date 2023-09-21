@@ -64,7 +64,7 @@ class Kucing extends Hewan {
 }
 
 // Membuat objek kucing
-$kucing = new Kucing("Kucing", "Putih", "Meong", "Whiskers");
+$kucing = new Kucing("Kucing", "Putih", "Meong", "Muhammad Sumbul");
 $kucing->getInfo();
 
 ?>
